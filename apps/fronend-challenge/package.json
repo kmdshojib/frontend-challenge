@@ -1,0 +1,8 @@
+{
+  "name": "@fronend-challenge/fronend-challenge",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "name": "fronend-challenge"
+  }
+}
