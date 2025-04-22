@@ -1,48 +1,20 @@
-import NxWelcome from './nx-welcome';
+import { counterAtom } from '@fronend-challenge/recoil';
+import { useRecoilState } from 'recoil';
 
-import { Route, Routes, Link } from 'react-router-dom';
+import { Ui,Button } from "@fronend-challenge/ui";
 
 export function App() {
-  return (
-    <div>
-      <NxWelcome title="fronend-challenge" />
+  const [count, setCount] = useRecoilState(counterAtom);
 
-      {/* START: routes */}
-      {/* These routes and navigation have been generated for you */}
-      {/* Feel free to move and update them to fit your needs */}
-      <br />
-      <hr />
-      <br />
-      <div role="navigation">
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/page-2">Page 2</Link>
-          </li>
-        </ul>
-      </div>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div>
-              This is the generated root route.{' '}
-              <Link to="/page-2">Click here for page 2.</Link>
-            </div>
-          }
-        />
-        <Route
-          path="/page-2"
-          element={
-            <div>
-              <Link to="/">Click here to go back to root page.</Link>
-            </div>
-          }
-        />
-      </Routes>
-      {/* END: routes */}
+  const handleClick = () => {
+    setCount((prevCount) => prevCount + 1);
+  };
+
+  return (
+    <div className='flex items-center justify-center flex-col'>
+      <h1 className='text-2xl font-bold'>Count: {count}</h1>
+      <Ui />
+      <Button className='bg-violet-400' name='Add Item' onClick={handleClick} />
     </div>
   );
 }
